@@ -1,11 +1,16 @@
-import Image from "next/image";
-import { CharacterCard } from "./components/CharacterCard";
+import LoadMOre from "./components/LoadMOre";
 
-export default function Home() {
+import { fetchRickMorty } from "./action";
+
+async function HomePage() {
+  const data = await fetchRickMorty();
+
   return (
-    <div>
-      <CharacterCard />
-      <h1>Rick and Morty App</h1>
-    </div>
+    <main>
+      <section>{data}</section>
+      <LoadMOre />
+    </main>
   );
 }
+
+export default HomePage;

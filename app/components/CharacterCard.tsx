@@ -5,13 +5,19 @@ export interface AnimeProp {
   name: string;
   location: string;
   resident: string;
+  image: {
+    original: string;
+  };
   status: string;
-  episode: string;
+  episodes: number;
   charcetr: string;
 }
 
-type Props = {};
+interface Props {
+  anime: AnimeProp;
+  index: number;
+}
 
-export const CharacterCard = (props: Props) => {
+export const CharacterCard = ({ anime, index }: Props) => {
   return <div>CharacterCard</div>;
 };
