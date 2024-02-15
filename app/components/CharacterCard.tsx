@@ -1,12 +1,19 @@
-import Image from "next/image";
+"use client";
 
-import React from "react";
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
+
+interface Resident {
+  id: number;
+  name: string;
+  image: string;
+}
 
 export interface AnimeProp {
   id: number;
   name: string;
   type: string;
-  residents: [];
+  residents: string[];
   dimension: string;
   url: string;
 }
@@ -17,6 +24,27 @@ interface Props {
 }
 
 export const CharacterCard = ({ anime, index }: Props) => {
+  const [residentData, setResidentData] = useState<Resident[]>([]);
+
+  useEffect(() => {
+    const fetchResidentData = async () => {
+      const residentsData = await Promise.all(
+        anime.residents.map(async (residentURL) => {
+          const response = await fetch(residentURL);
+          const data = await response.json();
+          return {
+            id: data.id,
+            name: data.name,
+            image: data.image, // Assuming image is a string URL
+          };
+        })
+      );
+      setResidentData(residentsData);
+    };
+
+    fetchResidentData();
+  }, [anime.residents]);
+
   return (
     <div className="character-card">
       <div className="py-4 flex flex-col m-2 bg-gray-300 rounded-md gap-3">
@@ -31,25 +59,18 @@ export const CharacterCard = ({ anime, index }: Props) => {
           </div>
         </div>
         <div className="flex gap-4 items-center">
-          <div className="flex flex-row gap-2 items-center">
-            <Image
-              src="./vercel.svg"
-              alt="episodes"
-              width={20}
-              height={20}
-              className="object-contain"
-            />
-            <p className="text-base text-white font-bold">{anime.dimension}</p>
-          </div>
-          <div className="flex flex-row gap-2 items-center">
-            <Image
-              src="./star.svg"
-              alt="star"
-              width={18}
-              height={18}
-              className="object-contain"
-            />
-          </div>
+          {residentData.map((resident) => (
+            <div key={resident.id} className="flex flex-row gap-2 items-center">
+              <Image
+                src={resident.image}
+                alt={resident.name}
+                width={100}
+                height={100}
+                className="object-contain"
+              />
+              <p className="text-base text-white font-bold">{resident.name}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
