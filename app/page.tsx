@@ -9,7 +9,9 @@ async function HomePage() {
 
   return (
     <main className="flex  flex-col  rounded-md mi-h-screen m-2 p-3 ">
-      <section className=" ">{data}</section>
+      <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
+        {data}
+      </section>
       <LoadMOre />
     </main>
   );
