@@ -11,7 +11,7 @@ async function HomePage() {
     <main className="flex  flex-col  rounded-md mi-h-screen m-2 p-3 ">
       <div>
         <input
-          className=" p-3 bg-gray-300 m-2 tex-white  rounded-md w-full "
+          className=" p-3 bg-gray-300 m-2 tex-white  font-bold rounded-md w-full "
           type="text"
           placeholder="serch location"
         />
