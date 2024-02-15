@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import SearchComponent from "./SearchComponent";
 
 interface Resident {
   id: number;
@@ -61,6 +62,8 @@ export const CharacterCard = ({ location, index }: Props) => {
 
   return (
     <div className="character-card">
+      <SearchComponent searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
       <div>
         <input
           type="text"
