@@ -11,13 +11,13 @@ async function HomePage() {
 
   return (
     <main className="flex  flex-col  rounded-md mi-h-screen m-2 p-3 ">
-      <div>
+      {/* <div>
         <input
           className=" p-3 bg-gray-300 m-2 tex-white  font-bold rounded-md w-full "
           type="text"
           placeholder="serch location"
         />
-      </div>
+      </div> */}
       {/* <SearchComponent searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> */}
       <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
         {data}

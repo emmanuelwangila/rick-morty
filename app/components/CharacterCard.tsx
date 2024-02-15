@@ -62,8 +62,6 @@ export const CharacterCard = ({ location, index }: Props) => {
 
   return (
     <div className="character-card">
-      <SearchComponent searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-
       <div>
         <input
           type="text"
