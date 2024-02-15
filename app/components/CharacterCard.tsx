@@ -63,7 +63,7 @@ export const CharacterCard = ({ anime, index }: Props) => {
       <div>
         <input
           type="text"
-          placeholder="Search "
+          placeholder="Search characters "
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="border border-gray-400 px-2 py-1 rounded-md"
