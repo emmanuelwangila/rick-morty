@@ -14,7 +14,7 @@ export const fetchRickMorty = async () => {
 
   // Map over the array and return an array of CharacterCard components
   return data.results.map((item: AnimeProp, index: number) => (
-    <CharacterCard key={item.id} anime={item} index={index} />
+    <CharacterCard key={item.id} location={item} index={index} />
   ));
 };
 

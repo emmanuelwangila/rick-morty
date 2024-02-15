@@ -26,18 +26,19 @@ export interface AnimeProp {
 }
 
 interface Props {
-  anime: AnimeProp;
+  location: AnimeProp;
   index: number;
 }
 
-export const CharacterCard = ({ anime, index }: Props) => {
+export const CharacterCard = ({ location, index }: Props) => {
   const [residentData, setResidentData] = useState<Resident[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [locations, setLocations] = useState<string>("");
 
   useEffect(() => {
     const fetchResidentData = async () => {
       const residentsData = await Promise.all(
-        anime.residents.map(async (residentURL) => {
+        location.residents.map(async (residentURL) => {
           const response = await fetch(residentURL);
           const data = await response.json();
           return {
@@ -52,7 +53,7 @@ export const CharacterCard = ({ anime, index }: Props) => {
     };
 
     fetchResidentData();
-  }, [anime.residents]);
+  }, [location.residents]);
 
   const filteredResidents = residentData.filter((resident) =>
     resident.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -72,11 +73,11 @@ export const CharacterCard = ({ anime, index }: Props) => {
       <div className="py-4 flex flex-col m-2 bg-gray-300 rounded-md gap-3">
         <div className="flex justify-between b flex-col items-center gap-1">
           <h2 className="font-bold m-5 bg-white rounded-md w-[80%] p-2 text-blue-500 text-md line-clamp-1 ">
-            location Name.. {anime.name}
+            location Name.. {location.name}
           </h2>
           <div className="py-1 px-2 bg-white  rounded-sm">
             <p className="text-black text-sm font-bold capitalize">
-              location Type .... {anime.type}
+              location Type .... {location.type}
             </p>
           </div>
         </div>
