@@ -6,6 +6,7 @@ export interface AnimeProp {
   id: number;
   name: string;
   type: string;
+  residents: [];
   dimension: string;
   url: string;
 }
@@ -48,7 +49,6 @@ export const CharacterCard = ({ anime, index }: Props) => {
               height={18}
               className="object-contain"
             />
-            <p>{anime.url}</p>
           </div>
         </div>
       </div>
