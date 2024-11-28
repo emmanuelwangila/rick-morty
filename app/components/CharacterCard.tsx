@@ -62,7 +62,7 @@ export const CharacterCard = ({ location, index }: Props) => {
 
   return (
     <div className="character-card">
-      <div>
+      {/* <div>
         <input
           type="text"
           placeholder="Search characters "
@@ -70,15 +70,15 @@ export const CharacterCard = ({ location, index }: Props) => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="border border-gray-400 px-2 py-1 rounded-md"
         />
-      </div>
-      <div className="py-4 flex flex-col m-2 bg-gray-300 rounded-md gap-3">
+      </div> */}
+      <div className="">
         <div className="flex justify-between b flex-col items-center gap-1">
           <h2 className="font-bold m-5 bg-white rounded-md w-[80%] p-2 text-blue-500 text-md line-clamp-1 ">
-            location Name.. {location.name}
+            {location.name}
           </h2>
           <div className="py-1 px-2 bg-white  rounded-sm">
             <p className="text-black text-sm font-bold capitalize">
-              location Type .... {location.type}
+              {location.type}
             </p>
           </div>
         </div>
